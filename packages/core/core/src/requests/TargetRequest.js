@@ -199,7 +199,8 @@ export class TargetResolver {
               minify: this.options.minify && descriptor.minify !== false,
               scopeHoist:
                 this.options.scopeHoist && descriptor.scopeHoist !== false,
-              unsafeInlining: descriptor.unsafeInlining !== false,
+              unsafeInlining:
+                descriptor.unsafeInlining ?? this.options.unsafeInlining,
             }),
             sourceMap: normalizeSourceMap(this.options, descriptor.sourceMap),
           };
@@ -247,7 +248,7 @@ export class TargetResolver {
               },
               minify: this.options.minify,
               scopeHoist: this.options.scopeHoist,
-              unsafeInlining: false,
+              unsafeInlining: this.options.unsafeInlining,
             }),
           },
         ];
@@ -418,7 +419,8 @@ export class TargetResolver {
             minify: this.options.minify && descriptor.minify !== false,
             scopeHoist:
               this.options.scopeHoist && descriptor.scopeHoist !== false,
-            unsafeInlining: descriptor.unsafeInlining !== false,
+            unsafeInlining:
+              descriptor.unsafeInlining ?? this.options.unsafeInlining,
           }),
           sourceMap: normalizeSourceMap(this.options, descriptor.sourceMap),
           loc,
@@ -500,7 +502,8 @@ export class TargetResolver {
             minify: this.options.minify && descriptor.minify !== false,
             scopeHoist:
               this.options.scopeHoist && descriptor.scopeHoist !== false,
-            unsafeInlining: descriptor.unsafeInlining !== false,
+            unsafeInlining:
+              descriptor.unsafeInlining ?? this.options.unsafeInlining,
           }),
           sourceMap: normalizeSourceMap(this.options, descriptor.sourceMap),
           loc,
@@ -520,6 +523,7 @@ export class TargetResolver {
           context,
           minify: this.options.minify,
           scopeHoist: this.options.scopeHoist,
+          unsafeInlining: this.options.unsafeInlining,
         }),
         sourceMap: this.options.sourceMaps ? {} : undefined,
       });
